@@ -111,7 +111,7 @@ O gateway usa env vars para nomes de serviço (funciona em Docker Compose e K8s)
 ### Core Frontend (build time)
 - `VITE_BASE_URL=/` — base path
 - `VITE_AUTH_MODULE_URL=/auth` — URL do auth-frontend (redirect quando não autenticado)
-- `VITE_GEOSERVER_URL=/geoserver` — URL do GeoServer
+- `VITE_GEOSERVER_URL=/geoserver/wms` — endpoint WMS do GeoServer (evita redirect 301 em `/geoserver`)
 
 ### Auth Backend (runtime)
 - `KEYCLOAK_URL=http://authentication:8080/keycloak` — URL interna do Keycloak

@@ -4,6 +4,7 @@
 # Usage: ./start.sh --<stage>
 
 set -e
+set -o pipefail
 
 echo "Loading environment variables and preparing directories..."
 
@@ -27,12 +28,99 @@ else
     exit 1
 fi
 
+# Avoids dangerous redirects (e.g., > /.env) when path variables are empty.
+validate_required_paths() {
+    local missing=0
+    local var
+
+    for var in \
+        CORE_FRONTEND_PATH CORE_FRONTEND_CONFIG_PATH \
+        CORE_BACKEND_PATH CORE_BACKEND_CONFIG_PATH \
+        AUTHENTICATION_PATH AUTHENTICATION_CONFIG_PATH \
+        CALCULATION_ENGINE_PATH CALCULATION_ENGINE_CONFIG_PATH \
+        GATEWAY_PATH GATEWAY_CONFIG_PATH \
+        GEOSERVER_PATH GEOSERVER_CONFIG_PATH; do
+        if [ -z "${!var:-}" ]; then
+            echo "ERROR: ${var} is not defined or is empty."
+            missing=1
+        fi
+    done
+
+    if [ "$missing" -eq 1 ]; then
+        exit 1
+    fi
+}
+validate_required_paths
+
 # Prepare Core_Frontend directory
 envsubst < $CORE_FRONTEND_CONFIG_PATH/environment/.env | envsubst | envsubst | envsubst > $CORE_FRONTEND_PATH/.env
-envsubst < $CORE_FRONTEND_CONFIG_PATH/docker/Dockerfile | envsubst | envsubst > $CORE_FRONTEND_PATH/Dockerfile
+cp $CORE_FRONTEND_CONFIG_PATH/docker/Dockerfile $CORE_FRONTEND_PATH/Dockerfile
+cp $CORE_FRONTEND_CONFIG_PATH/docker/.dockerignore $CORE_FRONTEND_PATH/.dockerignore
 envsubst  < $CORE_FRONTEND_CONFIG_PATH/docker/docker-compose.yaml | envsubst | envsubst > $CORE_FRONTEND_PATH/docker-compose.yaml
 envsubst  < $CORE_FRONTEND_CONFIG_PATH/nginx/nginx.conf.template > $CORE_FRONTEND_PATH/nginx.conf
-cp -r ./map_component $CORE_FRONTEND_PATH
+
+# Ensure package-lock.json exists before Docker build (npm ci requires lock aligned with package.json)
+ensure_map_component_package_lock() {
+    local src="./map_component"
+
+    if [ ! -d "$src" ]; then
+        return 0
+    fi
+
+    if [ ! -f "$src/package-lock.json" ] || [ "$src/package.json" -nt "$src/package-lock.json" ]; then
+        echo "WARNING: package-lock.json missing or outdated in map_component — regenerating..."
+        if command -v npm >/dev/null 2>&1; then
+            (cd "$src" && npm install --package-lock-only --ignore-scripts)
+        elif command -v docker >/dev/null 2>&1; then
+            docker run --rm -v "$(pwd)/$src:/app" -w /app node:18-alpine \
+                npm install --package-lock-only --ignore-scripts
+        elif command -v podman >/dev/null 2>&1; then
+            podman run --rm -v "$(pwd)/$src:/app" -w /app node:18-alpine \
+                npm install --package-lock-only --ignore-scripts
+        else
+            echo "ERROR: npm, docker or podman is required to generate package-lock.json."
+            exit 1
+        fi
+    fi
+}
+
+# Sync map_component into frontend (excludes .git/node_modules to avoid permission errors on copy)
+sync_map_component_to_frontend() {
+    local src="./map_component"
+    local dest="${CORE_FRONTEND_PATH}/map_component"
+
+    if [ ! -d "$src" ]; then
+        echo "ERROR: map_component folder not found at core root. Run ./setup.sh first."
+        exit 1
+    fi
+
+    if command -v rsync >/dev/null 2>&1; then
+        mkdir -p "$dest"
+        rsync -a --delete \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            "$src/" "$dest/"
+    else
+        rm -rf "$dest"
+        mkdir -p "$dest"
+        (cd "$src" && tar --exclude='.git' --exclude='node_modules' -cf - .) | (cd "$dest" && tar -xf -)
+    fi
+
+    # Stale node_modules in dest (e.g. from Docker build) is not removed by rsync --exclude
+    if [ -d "$dest/node_modules" ] && ! rm -rf "$dest/node_modules" 2>/dev/null; then
+        echo "WARNING: could not remove ${dest}/node_modules (permission denied). .dockerignore prevents impact on Docker build."
+    fi
+
+    if [ ! -f "$dest/package-lock.json" ]; then
+        echo "ERROR: package-lock.json not found in ${dest} after sync."
+        echo "Run: cd map_component && npm install --package-lock-only"
+        exit 1
+    fi
+
+    echo "map_component synced to ${dest} (without .git/node_modules)"
+}
+ensure_map_component_package_lock
+sync_map_component_to_frontend
 
 # Prepare Core_Backend directory
 envsubst < $CORE_BACKEND_CONFIG_PATH/environment/.env.example | envsubst | envsubst | envsubst > $CORE_BACKEND_PATH/.env

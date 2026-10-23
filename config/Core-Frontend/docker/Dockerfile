@@ -17,11 +17,20 @@ COPY package.json package-lock.json ./
 # ============================
 FROM dependencies AS deps-processed
 # Pacote local referenciado em package.json como file:./map_component
-COPY ./map_component ./map_component
+COPY map_component/package.json map_component/package-lock.json ./map_component/
+
+# Instala dependências do map_component (lock file versionado)
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --prefix map_component
 
 # Instalar dependências com cache otimizado
 RUN --mount=type=cache,target=/root/.npm \
     npm ci --ignore-scripts
+
+COPY ./map_component ./map_component
+
+# Build da biblioteca de mapa (frontend consome dist/index.mjs)
+RUN npm run build --prefix map_component
 
 # ============================
 # 3) Build Stage
@@ -29,7 +38,17 @@ RUN --mount=type=cache,target=/root/.npm \
 FROM deps-processed AS build
 COPY . .
 ARG APP_VERSION
-ENV APP_VERSION=${APP_VERSION}
+ARG VITE_BASE_URL=/
+ARG VITE_DPG_URL=/
+ARG VITE_AUTH_MODULE_URL=/auth
+ARG VITE_CALCULATION_ENGINE_BASE_URL=/calculation-engine
+ARG VITE_GEOSERVER_URL=/geoserver
+ENV APP_VERSION=$APP_VERSION
+ENV VITE_BASE_URL=$VITE_BASE_URL
+ENV VITE_DPG_URL=$VITE_DPG_URL
+ENV VITE_AUTH_MODULE_URL=$VITE_AUTH_MODULE_URL
+ENV VITE_CALCULATION_ENGINE_BASE_URL=$VITE_CALCULATION_ENGINE_BASE_URL
+ENV VITE_GEOSERVER_URL=$VITE_GEOSERVER_URL
 RUN npm run build-only
 RUN echo "$APP_VERSION" > dist/version.txt
 RUN sh scripts/generate-config.sh
@@ -42,7 +61,7 @@ FROM nginx:alpine
 # Atualizar pacotes para corrigir CVEs
 RUN apk update && apk upgrade --no-cache
 
-COPY --from=build /app/dist/ /usr/share/nginx/html${BASE_URL}
+COPY --from=build /app/dist/ /usr/share/nginx/html/
 RUN rm -f /etc/nginx/conf.d/default.conf
 COPY ./nginx.conf /etc/nginx/nginx.conf
 

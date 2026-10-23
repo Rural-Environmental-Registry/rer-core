@@ -9,6 +9,7 @@ services:
       - RUN_UNPRIVILEGED=true
       - RUN_WITH_USER_UID=999
       - RUN_WITH_USER_GID=999
+      - CHANGE_OWNERSHIP_ON_FOLDERS=/opt /var/geoserver/datadir /usr/local/tomcat/temp /usr/local/tomcat/work /usr/local/tomcat/logs
       - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
       - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
       - HTTP_PROXY=${HTTP_PROXY}
