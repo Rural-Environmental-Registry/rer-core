@@ -60,15 +60,16 @@ envsubst  < $CORE_FRONTEND_CONFIG_PATH/docker/docker-compose.yaml | envsubst | e
 envsubst  < $CORE_FRONTEND_CONFIG_PATH/nginx/nginx.conf.template > $CORE_FRONTEND_PATH/nginx.conf
 
 # Ensure package-lock.json exists before Docker build (npm ci requires lock aligned with package.json)
-ensure_map_component_package_lock() {
-    local src="./map_component"
+ensure_package_lock() {
+    local src="$1"
+    local label="$2"
 
     if [ ! -d "$src" ]; then
         return 0
     fi
 
     if [ ! -f "$src/package-lock.json" ] || [ "$src/package.json" -nt "$src/package-lock.json" ]; then
-        echo "WARNING: package-lock.json missing or outdated in map_component — regenerating..."
+        echo "WARNING: package-lock.json missing or outdated in ${label} — regenerating..."
         if command -v npm >/dev/null 2>&1; then
             (cd "$src" && npm install --package-lock-only --ignore-scripts)
         elif command -v docker >/dev/null 2>&1; then
@@ -82,6 +83,10 @@ ensure_map_component_package_lock() {
             exit 1
         fi
     fi
+}
+
+ensure_map_component_package_lock() {
+    ensure_package_lock "./map_component" "map_component"
 }
 
 # Sync map_component into frontend (excludes .git/node_modules to avoid permission errors on copy)
@@ -120,7 +125,24 @@ sync_map_component_to_frontend() {
     echo "map_component synced to ${dest} (without .git/node_modules)"
 }
 ensure_map_component_package_lock
+ensure_package_lock "${CORE_FRONTEND_PATH}" "frontend"
 sync_map_component_to_frontend
+
+compile_report_translations() {
+    local script="./scripts/i18n/compile-backend-reports.mjs"
+    if [ ! -f "$script" ]; then
+        return 0
+    fi
+    echo "Compilando traduções de relatório (PO → JSON)..."
+    if command -v node >/dev/null 2>&1; then
+        node "$script"
+    elif command -v docker >/dev/null 2>&1; then
+        docker run --rm -v "$(pwd):/app" -w /app node:18-alpine node "$script"
+    else
+        echo "WARNING: node não encontrado; usando arquivos JSON de relatório já versionados."
+    fi
+}
+compile_report_translations
 
 # Prepare Core_Backend directory
 envsubst < $CORE_BACKEND_CONFIG_PATH/environment/.env.example | envsubst | envsubst | envsubst > $CORE_BACKEND_PATH/.env

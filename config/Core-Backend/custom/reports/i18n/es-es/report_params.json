@@ -1,0 +1,48 @@
+{
+  "header": {
+    "title_text": "COMPROBANTE DE INSCRIPCIÓN DE PROPIEDAD RURAL EN RER",
+    "registry_code_label": "Registro RER",
+    "registry_at_date_label": "Inscrito el"
+  },
+  "main_property_information": {
+    "title_text": "COMPROBANTE DE INSCRIPCIÓN DE PROPIEDAD RURAL EN RER",
+    "rural_property_name_label": "Nombre de la Propiedad Rural",
+    "municipality_label": "Municipio",
+    "state_distric_label": "Estado/Provincia",
+    "geographic_coordinates_centroid_text": "Coordenadas Geográficas del Centroide de la Propiedad Rural",
+    "latitude_label": "Latitud",
+    "longitude_label": "Longitud",
+    "total_area_of_property_label": "Área Total (ha) de la Propiedad Rural"
+  },
+  "general_information_title": "INFORMACIÓN GENERAL",
+  "grafic_representation_title": "REPRESENTACIÓN GRÁFICA",
+  "owner_holder_information": {
+    "title_text": "IDENTIFICACIÓN DEL PROPIETARIO/POSEEDOR",
+    "identifier_label": "Identificador",
+    "name_label": "Nombre"
+  },
+  "land_documents": {
+    "title_text": "DOCUMENTOS FUNDIARIOS DE LA PROPIEDAD",
+    "registered_property_name_title": "Denominación de la Propiedad",
+    "basic_information": {
+      "document_type_label": "Tipo de Documento",
+      "area_label": "Área",
+      "has_legal_reserve_label": "¿Tiene Reserva Legal?"
+    },
+    "property_documents_attributes_title": "Atributos de los Documentos de la Propiedad",
+    "attributes": {
+      "holdingtype_label": "Tipo de Tenencia",
+      "deed_label": "Escritura",
+      "documentdate_label": "Fecha del Documento",
+      "book_label": "Libro",
+      "page_label": "Folio",
+      "state_of_notary_office_label": "Estado de la Notaría",
+      "city_of_notary_office_label": "Municipio de la Notaría",
+      "property_certification_label": "Matrícula de la Propiedad",
+      "national_rural_land_registration_number_label": "Código del Registro Fundiario Nacional"
+    }
+  },
+  "footer": {
+    "main_footer_text": "RER - Registro Ambiental Rural"
+  }
+}
