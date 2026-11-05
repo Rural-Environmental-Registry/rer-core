@@ -130,14 +130,17 @@ sync_map_component_to_frontend
 
 compile_report_translations() {
     local script="./scripts/i18n/compile-backend-reports.mjs"
+    local i18n_dir="./scripts/i18n"
     if [ ! -f "$script" ]; then
         return 0
     fi
     echo "Compilando traduções de relatório (PO → JSON)..."
-    if command -v node >/dev/null 2>&1; then
+    if command -v npm >/dev/null 2>&1 && command -v node >/dev/null 2>&1; then
+        (cd "$i18n_dir" && npm ci --ignore-scripts)
         node "$script"
     elif command -v docker >/dev/null 2>&1; then
-        docker run --rm -v "$(pwd):/app" -w /app node:18-alpine node "$script"
+        docker run --rm -v "$(pwd):/app" -w /app/scripts/i18n node:18-alpine \
+            sh -c "npm ci --ignore-scripts && node compile-backend-reports.mjs"
     else
         echo "WARNING: node não encontrado; usando arquivos JSON de relatório já versionados."
     fi
