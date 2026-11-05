@@ -8,9 +8,7 @@ import { unflattenStrings } from './lib/flatten-json.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '../..')
-const require = createRequire(
-  pathToFileURL(join(ROOT, 'frontend/node_modules/vue3-gettext/package.json')).href,
-)
+const require = createRequire(pathToFileURL(join(__dirname, 'package.json')).href)
 const PO = require('pofile')
 
 const localeDir = join(ROOT, 'locale/backend')

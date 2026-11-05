@@ -1,0 +1,8 @@
+{
+  "name": "rer-i18n-compile",
+  "private": true,
+  "description": "Dependências para compilar arquivos PO de tradução.",
+  "dependencies": {
+    "pofile": "1.1.4"
+  }
+}
