@@ -807,166 +807,63 @@ datastore_exists() {
     fi
 }
 
-# Função para baixar arquivo do IBGE
-download_ibge_file() {
-    local url=$1
-    local output_file=$2
+# Remove camada publicada (ex.: migração shapefile -> PostGIS)
+delete_layer_if_exists() {
+    local workspace_name=$1
+    local layer_name=$2
 
-    # Verificar se arquivo já existe
-    if [ -f "$output_file" ]; then
-        echo "✓ Arquivo já existe: $output_file"
+    if ! layer_exists "$workspace_name" "$layer_name"; then
         return 0
     fi
 
-    echo "Baixando arquivo: $output_file de $url"
+    echo "Removendo camada existente: ${workspace_name}:${layer_name}"
+    local status_code
+    status_code=$(curl -s -o /dev/null -w "%{http_code}" -u "${GEOSERVER_USER}:${GEOSERVER_PASSWORD}" \
+        -X DELETE "${GEOSERVER_URL}/rest/layers/${workspace_name}:${layer_name}?recurse=true")
 
-    if curl -L -o "$output_file" "$url"; then
-        echo "✓ Arquivo baixado com sucesso: $output_file"
+    if [ "$status_code" = "200" ] || [ "$status_code" = "204" ]; then
+        echo "✓ Camada removida: ${layer_name}"
         return 0
-    else
-        echo "✗ Erro ao baixar arquivo: $output_file"
-        return 1
     fi
+
+    echo "✗ Falha ao remover camada '${layer_name}' (HTTP $status_code)"
+    return 1
 }
 
-# Função para descompactar arquivo ZIP
-unzip_file() {
-    local zip_file=$1
-    local dest_dir=$2
-
-    # Verificar se diretório já existe e contém arquivos
-    if [ -d "$dest_dir" ] && [ "$(ls -A "$dest_dir" 2>/dev/null)" ]; then
-        echo "✓ Arquivo já descompactado: $dest_dir"
-        return 0
-    fi
-
-    echo "Descompactando: $zip_file para $dest_dir"
-
-    if unzip -o "$zip_file" -d "$dest_dir"; then
-        echo "✓ Arquivo descompactado com sucesso: $dest_dir"
-        return 0
-    else
-        echo "✗ Erro ao descompactar arquivo: $zip_file"
-        return 1
-    fi
-}
-
-# Função para criar datastore directory para shapefile
-create_shapefile_datastore() {
+# Publica camadas territoriais IBGE a partir das tabelas country/state/municipality (car_db)
+publish_ibge_territorial_layers() {
     local workspace_name=$1
     local datastore_name=$2
-    local shapefile_path=$3
+    local failed=0
 
-    # Verificar se datastore já existe
-    if datastore_exists "$workspace_name" "$datastore_name"; then
-        echo "✓ Datastore shapefile '$datastore_name' já existe"
-        return 0
-    fi
+    echo ""
+    echo "=== Publicando camadas territoriais IBGE (PostGIS) ==="
 
-    echo "Criando datastore shapefile: $datastore_name no workspace: $workspace_name"
-
-    local data="{
-        \"dataStore\": {
-            \"name\": \"$datastore_name\",
-            \"type\": \"Directory of spatial files (shapefiles)\",
-            \"enabled\": true,
-            \"workspace\": {
-                \"name\": \"$workspace_name\"
-            },
-            \"connectionParameters\": {
-                \"entry\": [
-                    {
-                        \"@key\": \"url\",
-                        \"$\": \"file:$shapefile_path\"
-                    },
-                    {
-                        \"@key\": \"charset\",
-                        \"$\": \"UTF-8\"
-                    }
-                ]
-            }
-        }
-    }"
-
-    local response=$(rest_request "POST" "/rest/workspaces/${workspace_name}/datastores" "$data")
-    local status_code=$(echo "$response" | tail -n 1)
-
-    if [ "$status_code" = "201" ]; then
-        echo "✓ Datastore shapefile '$datastore_name' criado com sucesso"
-        return 0
+    delete_layer_if_exists "$workspace_name" "PAIS" || failed=1
+    if [ "$failed" -eq 0 ] && publish_postgis_layer "$workspace_name" "$datastore_name" "PAIS" "country" "rer_no_opacity"; then
+        echo "✓ Camada PAIS (country) publicada"
     else
-        echo "✗ Erro ao criar datastore shapefile '$datastore_name'"
-        echo "Código HTTP: $status_code"
-        echo "Resposta: $(echo "$response" | head -n -1)"
-        return 1
-    fi
-}
-
-# Função para publicar camada shapefile
-publish_shapefile_layer() {
-    local workspace_name=$1
-    local datastore_name=$2
-    local layer_name=$3
-    local shapefile_name=$4
-    local style_name=${5:-""}
-
-    # Verificar se camada já existe
-    if layer_exists "$workspace_name" "$layer_name"; then
-        echo "✓ Camada shapefile '$layer_name' já existe"
-        return 0
+        echo "✗ Falha ao publicar PAIS"
+        failed=1
     fi
 
-    echo "Publicando camada shapefile: $layer_name no workspace: $workspace_name"
-
-    # Criar feature type simples baseado no shapefile
-    local data="{
-        \"featureType\": {
-            \"name\": \"$layer_name\",
-            \"nativeName\": \"$shapefile_name\",
-            \"title\": \"$layer_name\",
-            \"enabled\": true,
-            \"srs\": \"EPSG:4326\",
-            \"projectionPolicy\": \"REPROJECT_TO_DECLARED\",
-            \"nativeBoundingBox\": {
-                \"minx\": -73.9828,
-                \"maxx\": -34.7931,
-                \"miny\": -33.7517,
-                \"maxy\": 5.2718,
-                \"crs\": \"EPSG:4326\"
-            },
-            \"latLonBoundingBox\": {
-                \"minx\": -73.9828,
-                \"maxx\": -34.7931,
-                \"miny\": -33.7517,
-                \"maxy\": 5.2718,
-                \"crs\": \"EPSG:4326\"
-            }
-        }
-    }"
-
-    echo "Enviando requisição para criar feature type..."
-    echo "  Shapefile: $shapefile_name"
-    echo "  JSON enviado: $data"
-
-    # Criar a camada via REST API
-    local response=$(rest_request "POST" "/rest/workspaces/${workspace_name}/datastores/${datastore_name}/featuretypes" "$data")
-    local status_code=$(echo "$response" | tail -n 1)
-
-    if [ "$status_code" != "201" ]; then
-        echo "✗ Erro ao publicar camada shapefile '$layer_name'"
-        echo "Código HTTP: $status_code"
-        echo "Resposta: $(echo "$response" | head -n -1)"
-        return 1
+    delete_layer_if_exists "$workspace_name" "ESTADOS" || failed=1
+    if [ "$failed" -eq 0 ] && publish_postgis_layer "$workspace_name" "$datastore_name" "ESTADOS" "state" "rer_no_opacity"; then
+        echo "✓ Camada ESTADOS (state) publicada"
+    else
+        echo "✗ Falha ao publicar ESTADOS"
+        failed=1
     fi
 
-    echo "✓ Camada shapefile '$layer_name' criada com sucesso"
-
-    # Aplicar estilo se especificado
-    if [ -n "$style_name" ]; then
-        apply_layer_style "$workspace_name" "$layer_name" "$style_name"
+    delete_layer_if_exists "$workspace_name" "MUNICIPIOS" || failed=1
+    if [ "$failed" -eq 0 ] && publish_postgis_layer "$workspace_name" "$datastore_name" "MUNICIPIOS" "municipality" "rer_municipality"; then
+        echo "✓ Camada MUNICIPIOS (municipality) publicada"
+    else
+        echo "✗ Falha ao publicar MUNICIPIOS"
+        failed=1
     fi
 
-    return 0
+    return "$failed"
 }
 
 # Função para aguardar GeoServer estar pronto
@@ -1104,63 +1001,8 @@ main() {
     fi
 
     echo ""
-    echo "=== Publicando Camadas IBGE ==="
-
-    # Criar diretório para shapefiles no data_dir do GeoServer
-    SHAPEFILES_DIR="/var/geoserver/datadir/shapefiles"
-    mkdir -p "$SHAPEFILES_DIR"
-
-    # Criar diretório temporário para downloads
-    TEMP_DIR="./temp_downloads"
-    mkdir -p "$TEMP_DIR"
-
-    # URLs dos arquivos IBGE
-    MUNICIPIOS_URL="https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_Municipios_2024.zip"
-    UF_URL="https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_UF_2024.zip"
-    PAIS_URL="https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2024/Brasil/BR_Pais_2024.zip"
-
-    # MUNICIPIOS
-    echo "Processando camada MUNICIPIOS..."
-    if layer_exists "$WORKSPACE_NAME" "MUNICIPIOS"; then
-        echo "✓ Camada MUNICIPIOS já existe, pulando download"
-    elif download_ibge_file "$MUNICIPIOS_URL" "$TEMP_DIR/BR_Municipios_2024.zip" &&
-         unzip_file "$TEMP_DIR/BR_Municipios_2024.zip" "$SHAPEFILES_DIR/municipios" &&
-         create_shapefile_datastore "$WORKSPACE_NAME" "municipios_shp" "$SHAPEFILES_DIR/municipios" &&
-         publish_shapefile_layer "$WORKSPACE_NAME" "municipios_shp" "MUNICIPIOS" "BR_Municipios_2024" "rer_municipality"; then
-        echo "✓ Camada MUNICIPIOS criada com sucesso"
-    else
-        echo "✗ Falha ao criar camada MUNICIPIOS"
-    fi
-
-    # ESTADOS (UF)
-    echo "Processando camada ESTADOS..."
-    if layer_exists "$WORKSPACE_NAME" "ESTADOS"; then
-        echo "✓ Camada ESTADOS já existe, pulando download"
-    elif download_ibge_file "$UF_URL" "$TEMP_DIR/BR_UF_2024.zip" &&
-         unzip_file "$TEMP_DIR/BR_UF_2024.zip" "$SHAPEFILES_DIR/uf" &&
-         create_shapefile_datastore "$WORKSPACE_NAME" "uf_shp" "$SHAPEFILES_DIR/uf" &&
-         publish_shapefile_layer "$WORKSPACE_NAME" "uf_shp" "ESTADOS" "BR_UF_2024" "rer_no_opacity"; then
-        echo "✓ Camada ESTADOS criada com sucesso"
-    else
-        echo "✗ Falha ao criar camada ESTADOS"
-    fi
-
-    # PAIS
-    echo "Processando camada PAIS..."
-    if layer_exists "$WORKSPACE_NAME" "PAIS"; then
-        echo "✓ Camada PAIS já existe, pulando download"
-    elif download_ibge_file "$PAIS_URL" "$TEMP_DIR/BR_Pais_2024.zip" &&
-         unzip_file "$TEMP_DIR/BR_Pais_2024.zip" "$SHAPEFILES_DIR/pais" &&
-         create_shapefile_datastore "$WORKSPACE_NAME" "pais_shp" "$SHAPEFILES_DIR/pais" &&
-         publish_shapefile_layer "$WORKSPACE_NAME" "pais_shp" "PAIS" "BR_Pais_2024" "rer_no_opacity"; then
-        echo "✓ Camada PAIS criada com sucesso"
-    else
-        echo "✗ Falha ao criar camada PAIS"
-    fi
-
-    # Limpar arquivos temporários (apenas ZIPs, mantendo shapefiles no GeoServer)
-    echo "Limpando arquivos temporários..."
-    rm -rf "$TEMP_DIR"
+    echo "Camadas territoriais IBGE (PAIS/ESTADOS/MUNICIPIOS) são publicadas após a carga em car_db."
+    echo "Execute: populate_geoserver.sh --ibge-layers (chamado pelo start.sh após load_ibge_territorial_data.sh)"
 
     echo ""
     echo "=== Operações concluídas com sucesso! ==="
@@ -1170,7 +1012,50 @@ main() {
     echo "Estilos criados: ${#STYLES[@]} estilos"
     echo "Camadas publicadas:"
     echo "  - 7 camadas do banco com filtros CQL aplicados automaticamente"
-    echo "  - 3 camadas shapefile IBGE (MUNICIPIOS, ESTADOS, PAIS) com estilo rer_no_opacity"
+    echo "  - 3 camadas territoriais IBGE via PostGIS (após load_ibge_territorial_data.sh)"
+}
+
+# Publica apenas PAIS/ESTADOS/MUNICIPIOS a partir de country/state/municipality
+main_ibge_layers() {
+    echo "=== GeoServer: camadas territoriais IBGE (PostGIS) ==="
+    echo "GeoServer URL: $GEOSERVER_URL"
+    echo ""
+
+    if ! wait_for_geoserver; then
+        echo "Falha ao aguardar GeoServer. Saindo..."
+        exit 1
+    fi
+
+    WORKSPACE_NAME=${WORKSPACE_NAME:-"rer"}
+    DATASTORE_NAME=${DATASTORE_NAME:-"db"}
+    DB_HOST=${DB_HOST:-"host.docker.internal"}
+    DB_PORT=${DB_PORT:-"5432"}
+    DB_NAME=${DB_NAME:-"car_db"}
+    DB_SCHEMA=${DB_SCHEMA:-"public"}
+    DB_USER=${DB_USER:-"car_user"}
+    DB_PASSWORD=${DB_PASSWORD:-"car_password"}
+
+    if ! workspace_exists "$WORKSPACE_NAME"; then
+        if ! create_workspace "$WORKSPACE_NAME"; then
+            exit 1
+        fi
+    fi
+
+    if ! datastore_exists "$WORKSPACE_NAME" "$DATASTORE_NAME"; then
+        if ! create_postgis_datastore "$WORKSPACE_NAME" "$DATASTORE_NAME" "$DB_HOST" "$DB_PORT" "$DB_NAME" "$DB_SCHEMA" "$DB_USER" "$DB_PASSWORD"; then
+            exit 1
+        fi
+    fi
+
+    for style in rer_no_opacity rer_municipality; do
+        create_embedded_style "$style" "$WORKSPACE_NAME" || true
+    done
+
+    if ! publish_ibge_territorial_layers "$WORKSPACE_NAME" "$DATASTORE_NAME"; then
+        exit 1
+    fi
+
+    echo "Camadas territoriais IBGE publicadas com sucesso."
 }
 
 # Verificar se curl está instalado
@@ -1179,11 +1064,8 @@ if ! command -v curl &> /dev/null; then
     exit 1
 fi
 
-# Verificar se unzip está instalado
-if ! command -v unzip &> /dev/null; then
-    echo "Erro: unzip não está instalado. Instale-o primeiro."
-    exit 1
+if [ "${1:-}" = "--ibge-layers" ]; then
+    main_ibge_layers
+else
+    main "$@"
 fi
-
-# Executar função principal com os argumentos passados
-main "$@"

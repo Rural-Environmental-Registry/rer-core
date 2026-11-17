@@ -130,14 +130,17 @@ sync_map_component_to_frontend
 
 compile_report_translations() {
     local script="./scripts/i18n/compile-backend-reports.mjs"
+    local i18n_dir="./scripts/i18n"
     if [ ! -f "$script" ]; then
         return 0
     fi
     echo "Compilando traduções de relatório (PO → JSON)..."
-    if command -v node >/dev/null 2>&1; then
+    if command -v npm >/dev/null 2>&1 && command -v node >/dev/null 2>&1; then
+        (cd "$i18n_dir" && npm ci --ignore-scripts)
         node "$script"
     elif command -v docker >/dev/null 2>&1; then
-        docker run --rm -v "$(pwd):/app" -w /app node:18-alpine node "$script"
+        docker run --rm -v "$(pwd):/app" -w /app/scripts/i18n node:18-alpine \
+            sh -c "npm ci --ignore-scripts && node compile-backend-reports.mjs"
     else
         echo "WARNING: node não encontrado; usando arquivos JSON de relatório já versionados."
     fi
@@ -206,6 +209,42 @@ else
     envsubst < $GATEWAY_CONFIG_PATH/application/settings.xml > $GATEWAY_PATH/settings.xml
 fi
 
+# Aguarda container one-shot terminar com o código de saída esperado.
+wait_for_container_exit() {
+    local container_name="$1"
+    local expected_exit_code="${2:-0}"
+    local max_wait_seconds="${3:-600}"
+    local elapsed=0
+
+    echo "Aguardando container '$container_name' finalizar..."
+    while [ "$elapsed" -lt "$max_wait_seconds" ]; do
+        if ! docker inspect "$container_name" >/dev/null 2>&1; then
+            sleep 5
+            elapsed=$((elapsed + 5))
+            continue
+        fi
+
+        local status exit_code
+        status="$(docker inspect -f '{{.State.Status}}' "$container_name" 2>/dev/null || echo "")"
+        exit_code="$(docker inspect -f '{{.State.ExitCode}}' "$container_name" 2>/dev/null || echo "")"
+
+        if [ "$status" = "exited" ]; then
+            if [ "$exit_code" = "$expected_exit_code" ]; then
+                echo "Container '$container_name' finalizou com sucesso."
+                return 0
+            fi
+            echo "ERROR: Container '$container_name' finalizou com código $exit_code (esperado: $expected_exit_code)."
+            return 1
+        fi
+
+        sleep 5
+        elapsed=$((elapsed + 5))
+    done
+
+    echo "ERROR: Timeout aguardando container '$container_name'."
+    return 1
+}
+
 echo "Environment variables loaded and directories prepared successfully."
 
 echo "Starting Docker Compose environment for RER DPG project..."
@@ -214,3 +253,13 @@ echo "Starting Docker Compose environment for RER DPG project..."
 docker compose -f docker-compose.yaml build --progress=plain --no-cache
 docker compose -f docker-compose.yaml up --force-recreate -d --remove-orphans
 echo "Docker Compose environment started successfully."
+
+wait_for_container_exit "geoserver-init" 0 900
+
+echo "Verificando dados territoriais IBGE em car_db..."
+bash "$CORE_BACKEND_CONFIG_PATH/scripts/load_ibge_territorial_data.sh"
+echo "Dados territoriais IBGE conferidos."
+
+echo "Publicando camadas territoriais IBGE no GeoServer (PostGIS)..."
+docker exec "${GEOSERVER_CONTAINER_NAME:-geoserver}" bash -c '/opt/populate_geoserver.sh --ibge-layers'
+echo "Camadas territoriais IBGE publicadas no GeoServer."
