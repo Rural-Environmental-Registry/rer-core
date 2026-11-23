@@ -38,7 +38,15 @@ http {
  
         root /usr/share/nginx/html;
         index index.html;
-        
+
+        location = /blueprint.html {
+            try_files /blueprint.html =404;
+        }
+
+        location = /blueprint {
+            try_files /blueprint.html =404;
+        }
+
         location ${BASE_URL}/ {
             try_files ${DOLLAR}uri ${DOLLAR}uri/ ${BASE_URL}/index.html;
         }

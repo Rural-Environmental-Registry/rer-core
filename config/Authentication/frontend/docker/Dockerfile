@@ -9,7 +9,7 @@ RUN apk update && apk upgrade --no-cache
 WORKDIR /app
 
 # Instalar pnpm globalmente
-RUN npm install -g pnpm
+RUN npm install -g pnpm@9
 
 # Copiar apenas arquivos de dependências primeiro
 COPY package.json pnpm-lock.yaml ./

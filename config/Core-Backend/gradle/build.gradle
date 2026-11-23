@@ -102,3 +102,22 @@ task copyCompiledJasper(type: Copy) {
     from "${DOLLAR}buildDir/generated-jasper"
     into "${DOLLAR}buildDir/resources/main/reports"
 }
+
+def i18nScript = file("${DOLLAR}{projectDir}/../scripts/i18n/compile-backend-reports.mjs")
+def localeDir = file("${DOLLAR}{projectDir}/../locale/backend")
+
+task compileReportTranslations(type: Exec) {
+    group = "i18n"
+    description = "Compila locale/backend/*.po para reports/i18n/{locale}/report_params.json"
+    workingDir = "${DOLLAR}{projectDir}/.."
+    commandLine "node", "scripts/i18n/compile-backend-reports.mjs"
+    outputs.dir("${DOLLAR}{projectDir}/src/main/resources/reports/i18n")
+    onlyIf {
+        def node = ["which", "node"].execute().text.trim()
+        i18nScript.exists() && localeDir.isDirectory() && !node.isEmpty()
+    }
+}
+
+tasks.named('processResources') {
+    dependsOn compileReportTranslations
+}

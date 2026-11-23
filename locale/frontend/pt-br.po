@@ -1,0 +1,1379 @@
+# RER-DPG Frontend translations.
+# Copyright (C) 2026 RER-DPG
+# This file is distributed under the same license as the RER-DPG package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: rer-dpg\n"
+"POT-Creation-Date: 2026-06-22T19:12:34.729Z\n"
+"PO-Revision-Date: 2026-06-22T19:12:34.729Z\n"
+"Last-Translator: RER-DPG\n"
+"Language-Team: pt-br\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt-br\n"
+
+#: legacy:common.active
+msgid "Active"
+msgstr "Ativo"
+
+#: legacy:common.inactive
+msgid "Inactive"
+msgstr "Inativo"
+
+#: legacy:descriptiveMemorial.addPoint
+msgid "Add Point"
+msgstr "Adicionar Ponto"
+
+#: legacy:descriptiveMemorial.addPointDescription
+msgid "Add a new point to the list"
+msgstr "Adicionar um novo ponto à lista"
+
+#: legacy:descriptiveMemorial.addedPoints
+msgid "Added Points"
+msgstr "Pontos Adicionados"
+
+#: legacy:descriptiveMemorial.applyCsvCoordinates
+msgid "Apply CSV Coordinates"
+msgstr "Aplicar Coordenadas do CSV"
+
+#: legacy:descriptiveMemorial.azimuth
+msgid "Azimuth"
+msgstr "Azimute"
+
+#: legacy:descriptiveMemorial.clearGeometries
+msgid "Clear Geometries"
+msgstr "Limpar Geometrias"
+
+#: legacy:descriptiveMemorial.clearGeometriesDescription
+msgid "Clear all geometries from the map"
+msgstr "Limpar todas as geometrias do mapa"
+
+#: legacy:descriptiveMemorial.coordinateFormat
+msgid "Coordinate Format"
+msgstr "Formato de Coordenadas"
+
+#: legacy:descriptiveMemorial.csvColumnsInfo
+msgid "The file must contain the columns: X, Y, AZIMUTH, DISTANCE"
+msgstr "O arquivo deve conter as colunas: X, Y, AZIMUTH, DISTANCIA"
+
+#: legacy:descriptiveMemorial.csvFileUpload
+msgid "CSV File Upload"
+msgstr "Upload de Arquivo CSV"
+
+#: legacy:descriptiveMemorial.csvUpload
+msgid "CSV Upload"
+msgstr "Upload CSV"
+
+#: legacy:descriptiveMemorial.decimalDegrees
+msgid "Decimal Degrees (DD)"
+msgstr "Graus Decimais (DD)"
+
+#: legacy:descriptiveMemorial.degrees
+msgid "Degrees"
+msgstr "Graus"
+
+#: legacy:descriptiveMemorial.degreesMinutesSeconds
+msgid "Degrees, Minutes, Seconds (DMS)"
+msgstr "Graus, Minutos, Segundos (DMS)"
+
+#: legacy:descriptiveMemorial.distance
+msgid "Distance"
+msgstr "Distância"
+
+#: legacy:descriptiveMemorial.dragCsvFile
+msgid "Drag CSV file or click to upload"
+msgstr "Arraste o arquivo CSV ou clique para fazer upload"
+
+#: legacy:descriptiveMemorial.dragShapefileZip
+msgid "Drag ZIP file or click to upload"
+msgstr ""
+
+#: legacy:descriptiveMemorial.editPoint
+msgid "Edit Point"
+msgstr "Editar Ponto"
+
+#: legacy:descriptiveMemorial.editPointDescription
+msgid "Edit the selected point"
+msgstr "Editar o ponto selecionado"
+
+#: legacy:descriptiveMemorial.errorDegreesRequired
+msgid "Degrees are required for the first point"
+msgstr "Graus são obrigatórios no primeiro ponto"
+
+#: legacy:descriptiveMemorial.errorFirstRowXY
+msgid "The first row of the CSV must contain X and Y coordinates"
+msgstr "A primeira linha do CSV deve conter as coordenadas X e Y"
+
+#: legacy:descriptiveMemorial.errorProvideCoordinatesOrAzimuthDistance
+msgid "Provide coordinates or Azimuth and Distance"
+msgstr "Forneça coordenadas ou Azimuth e Distância"
+
+#: legacy:descriptiveMemorial.errorXYRequired
+msgid "X and Y are required for the first point"
+msgstr "X e Y são obrigatórios no primeiro ponto"
+
+#: legacy:descriptiveMemorial.finalizeGeometry
+msgid "Finalize Geometry"
+msgstr "Finalizar Geometria"
+
+#: legacy:descriptiveMemorial.index
+msgid "Index"
+msgstr "Índice"
+
+#: legacy:descriptiveMemorial.insertCoordinates
+msgid "Insert Coordinates"
+msgstr "Inserir Coordenadas"
+
+#: legacy:descriptiveMemorial.manualInput
+msgid "Manual Input"
+msgstr "Preenchimento Manual"
+
+#: legacy:descriptiveMemorial.memorialDescriptive
+msgid "Descriptive Memorial"
+msgstr "Memorial Descritivo"
+
+#: legacy:descriptiveMemorial.minutes
+msgid "Minutes"
+msgstr "Minutos"
+
+#: legacy:descriptiveMemorial.noPoints
+msgid "No points added"
+msgstr "Nenhum ponto adicionado"
+
+#: legacy:descriptiveMemorial.placeholderAzimuth
+msgid "e.g., 90"
+msgstr "Ex: 90"
+
+#: legacy:descriptiveMemorial.placeholderDistance
+msgid "e.g., 100"
+msgstr "Ex: 100"
+
+#: legacy:descriptiveMemorial.placeholderLatitude
+msgid "e.g., -23.5505"
+msgstr "Ex: -23.5505"
+
+#: legacy:descriptiveMemorial.placeholderLongitude
+msgid "e.g., -46.6333"
+msgstr "Ex: -46.6333"
+
+#: legacy:descriptiveMemorial.referenceSystem
+msgid "Reference System"
+msgstr "Sistema de Referência"
+
+#: legacy:descriptiveMemorial.removePoint
+msgid "Remove Point"
+msgstr "Remover Ponto"
+
+#: legacy:descriptiveMemorial.removePointDescription
+msgid "Remove the selected point"
+msgstr "Remover o ponto selecionado"
+
+#: legacy:descriptiveMemorial.seconds
+msgid "Seconds"
+msgstr "Segundos"
+
+#: legacy:descriptiveMemorial.selectFormat
+msgid "Select format"
+msgstr "Selecione o formato"
+
+#: legacy:descriptiveMemorial.selectSystem
+msgid "Select system"
+msgstr "Selecione o sistema"
+
+#: legacy:descriptiveMemorial.shapefileAppliedSuccess
+msgid "Shapefile applied successfully"
+msgstr ""
+
+#: legacy:descriptiveMemorial.shapefileUpload
+msgid "Shapefile Upload"
+msgstr ""
+
+#: legacy:descriptiveMemorial.shapefileZipInfo
+msgid "Upload a .zip with .shp, .shx and .dbf containing a single Polygon or MultiPolygon geometry"
+msgstr ""
+
+#: legacy:descriptiveMemorial.sirgas2000
+msgid "SIRGAS 2000"
+msgstr "SIRGAS 2000"
+
+#: legacy:descriptiveMemorial.title
+msgid "Coordinates"
+msgstr "Coordenadas"
+
+#: legacy:descriptiveMemorial.x
+msgid "X"
+msgstr "X"
+
+#: legacy:descriptiveMemorial.xLongitude
+msgid "X (Longitude)"
+msgstr "X (Longitude)"
+
+#: legacy:descriptiveMemorial.y
+msgid "Y"
+msgstr "Y"
+
+#: legacy:descriptiveMemorial.yLatitude
+msgid "Y (Latitude)"
+msgstr "Y (Latitude)"
+
+#: legacy:details.cityStateOfNotaryOffice
+msgid "City/State of Notary Office"
+msgstr "Município/UF do Cartório"
+
+#: legacy:details.descriptionOfPropertyAccess
+msgid "Description of Property Access"
+msgstr "Descrição do Acesso ao Imóvel"
+
+#: legacy:details.documentArea
+msgid "Document Area"
+msgstr "Área do Documento"
+
+#: legacy:details.downloadReceipt
+msgid "Download Receipt"
+msgstr "Baixar Recibo"
+
+#: legacy:details.editRegistry
+msgid "Edit"
+msgstr "Editar"
+
+#: legacy:details.id
+msgid "ID"
+msgstr "CPF"
+
+#: legacy:details.locationZone
+msgid "Location Zone"
+msgstr "Zona de Localização"
+
+#: legacy:details.owner
+msgid "OWNER"
+msgstr "DETENTOR"
+
+#: legacy:details.ownerOrHolder
+msgid "Owner or Holder"
+msgstr "Proprietário ou Posseiro"
+
+#: legacy:details.property
+msgid "PROPERTY"
+msgstr "IMÓVEL"
+
+#: legacy:details.registeredAreas
+msgid "REGISTERED AREAS"
+msgstr "ÁREAS CADASTRADAS"
+
+#: legacy:details.registrars
+msgid "REGISTRAR'S"
+msgstr "DECLARANTE"
+
+#: legacy:details.route
+msgid "Property Details"
+msgstr "Detalhes do Imóvel"
+
+#: legacy:details.titleDeedOrLandDocument
+msgid "Title deed/Land Document"
+msgstr "Número do Documento"
+
+#: legacy:footer
+msgid "RER - Rural Environmental Registry."
+msgstr "CAR - Cadastro Ambiental Rural."
+
+#: legacy:homepage.avatar.logout
+msgid "Logout"
+msgstr "Sair"
+
+#: legacy:homepage.avatar.title
+msgid "My account"
+msgstr "Minha conta"
+
+#: legacy:homepage.demoBanner
+msgid " This environment is for demonstration purposes. Data is deleted daily and should not be considered permanent."
+msgstr " Este ambiente é de demonstração. Os dados são apagados diariamente e não devem ser considerados permanentes."
+
+#: legacy:homepage.demoBannerTitle
+msgid "Information."
+msgstr "Informação."
+
+#: legacy:homepage.learnMore
+msgid "Learn more about the project."
+msgstr "Saiba mais sobre o projeto"
+
+#: legacy:homepage.profile
+msgid "Profile"
+msgstr "Perfil"
+
+#: legacy:homepage.properties
+msgid "Properties"
+msgstr "Propriedades"
+
+#: legacy:homepage.registerProperty
+msgid "Register property"
+msgstr "Cadastrar imóvel"
+
+#: legacy:homepage.title
+msgid "Choose the option based on what you want to do."
+msgstr "Escolha a opção com base no que você deseja fazer."
+
+#: legacy:layers.base.esriImagery.name
+msgid "Esri Imagery"
+msgstr "Esri Imagery"
+
+#: legacy:layers.base.openStreetMap.name
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: legacy:layers.invalidPolygon
+msgid "The layer being applied is not a valid polygon. Please verify and try again."
+msgstr "A camada que está sendo aplicada não é um polígono válido. Por favor, verifique e tente novamente."
+
+#: legacy:layers.invalidType
+msgid "The layer being applied has an incompatible geometry with the expected one. Please verify and try again."
+msgstr "A camada que está sendo aplicada apresenta uma geometria incompatível com a esperada. Por favor, verifique e tente novamente."
+
+#: legacy:layers.layerRemoval
+msgid "One or more layers ({layers}) presented errors and were removed from the map after being processed. Please verify and try again."
+msgstr "Uma ou mais camadas ({layers}) apresentaram erros e foram removidas do mapa após ser processadas. Por favor, verifique e tente novamente."
+
+#: legacy:layers.vectorization.consolidatedAreaVec.description
+msgid "Vectorize the consolidated area of the property."
+msgstr "Vetorize a área consolidada do imóvel."
+
+#: legacy:layers.vectorization.hydrographyGroup.description
+msgid "Select hydrography layers to draw and process."
+msgstr "Selecione camadas de hidrografia para desenhar e processar."
+
+#: legacy:layers.vectorization.hydrographyGroup.groupName
+msgid "Hydrography"
+msgstr "Hidrografia"
+
+#: legacy:layers.vectorization.landCoverGroup.description
+msgid "Select land cover layers to draw and process."
+msgstr "Selecione camadas de cobertura do solo para desenhar e processar."
+
+#: legacy:layers.vectorization.landCoverGroup.groupName
+msgid "Land Cover"
+msgstr "Cobertura do Solo"
+
+#: legacy:layers.vectorization.legalReserve.description
+msgid "Vectorize the legal reserve area of the property."
+msgstr "Vetorize a área de reserva legal na propriedade."
+
+#: legacy:layers.vectorization.legalReserveGroup.description
+msgid "Select a layer to draw and process."
+msgstr "Selecione camadas de reserva legal para desenhar e processar."
+
+#: legacy:layers.vectorization.legalReserveGroup.groupName
+msgid "Legal Reserve"
+msgstr "Reserva Legal"
+
+#: legacy:layers.vectorization.nativeVegetationVec.description
+msgid "Vectorize the remaining native vegetation of the property."
+msgstr "Vetorize a vegetação nativa remanescente do imóvel."
+
+#: legacy:layers.vectorization.propertyGroup.description
+msgid "Select a layer to draw and process property areas."
+msgstr "Selecione uma camada para desenhar e processar áreas do imóvel."
+
+#: legacy:layers.vectorization.propertyHeadquarter.description
+msgid "Mark the location of the property headquarter."
+msgstr "Marque a localização da sede da propriedade."
+
+#: legacy:layers.vectorization.propertyHeadquarter.displayName
+msgid "Property Headquarter"
+msgstr "Sede do Imóvel"
+
+#: legacy:layers.vectorization.river.description
+msgid "Vectorize the river area of the property."
+msgstr "Vetorize a área do rio na propriedade."
+
+#: legacy:layers.vectorization.river.displayName
+msgid "River"
+msgstr "Rio"
+
+#: legacy:layers.vectorization.river.tooltip
+msgid "Permanent Protected Area (River)"
+msgstr "Área de Proteção Permanentemente (Rio)"
+
+#: legacy:layers.vectorization.riverSpring.description
+msgid "Vectorize the spring area of the property."
+msgstr "Vetorize a área da nascente na propriedade."
+
+#: legacy:layers.vectorization.riverSpring.displayName
+msgid "River spring"
+msgstr "Nascente"
+
+#: legacy:layers.vectorization.riverSpring.tooltip
+msgid "Permanent Protected Area (River Spring)"
+msgstr "Área de Proteção Permanentemente (Nascente)"
+
+#: legacy:layers.vectorization.riverUpTo10m.displayName
+msgid "River (up to 10m)"
+msgstr "Rio (até 10m)"
+
+#: legacy:layers.vectorization.riverUpTo10m.tooltip
+msgid "Permanent Protected Area (River up to 10m)"
+msgstr "Área de Proteção Permanentemente (Rio até 10m)"
+
+#: legacy:layers.vectorization.ruralProperty.description
+msgid "Vectorize the rural property area."
+msgstr "Vetorize a área do imóvel."
+
+#: legacy:layers.vectorization.ruralProperty.displayName
+msgid "Rural Property Area"
+msgstr "Área do Imóvel Rural"
+
+#: legacy:leafletDraw.draw.handlers.circle.radius
+msgid "Radius"
+msgstr "Raio"
+
+#: legacy:leafletDraw.draw.handlers.circle.tooltip.start
+msgid "Click and drag to draw circle."
+msgstr "Clique e arraste para desenhar o círculo."
+
+#: legacy:leafletDraw.draw.handlers.circlemarker.tooltip.start
+msgid "Click map to place circle marker."
+msgstr "Clique no mapa para posicionar o marcador circular."
+
+#: legacy:leafletDraw.draw.handlers.marker.tooltip.start
+msgid "Click map to place marker."
+msgstr "Clique no mapa para posicionar o marcador."
+
+#: legacy:leafletDraw.draw.handlers.polygon.tooltip.cont
+msgid "Click to continue drawing shape."
+msgstr "Clique para continuar desenhando a forma."
+
+#: legacy:leafletDraw.draw.handlers.polygon.tooltip.end
+msgid "Click first point to close this shape."
+msgstr "Clique no primeiro ponto para fechar esta forma."
+
+#: legacy:leafletDraw.draw.handlers.polygon.tooltip.start
+msgid "Click to start drawing shape."
+msgstr "Clique para iniciar o desenho da forma."
+
+#: legacy:leafletDraw.draw.handlers.polyline.error
+msgid "<strong>Error:</strong> shape edges cannot cross!"
+msgstr "<strong>Erro:</strong> as bordas da forma não podem se cruzar!"
+
+#: legacy:leafletDraw.draw.handlers.polyline.tooltip.cont
+msgid "Click to continue drawing line."
+msgstr "Clique para continuar o desenho da linha."
+
+#: legacy:leafletDraw.draw.handlers.polyline.tooltip.end
+msgid "Click last point to finish line."
+msgstr "Clique no último ponto para finalizar a linha."
+
+#: legacy:leafletDraw.draw.handlers.polyline.tooltip.start
+msgid "Click to start drawing line."
+msgstr "Clique para iniciar o desenho da linha."
+
+#: legacy:leafletDraw.draw.handlers.rectangle.tooltip.start
+msgid "Click and drag to draw rectangle."
+msgstr "Clique e arraste para desenhar o retângulo."
+
+#: legacy:leafletDraw.draw.handlers.simpleshape.tooltip.end
+msgid "Release mouse to finish drawing."
+msgstr "Solte o mouse para finalizar o desenho."
+
+#: legacy:leafletDraw.draw.toolbar.actions.title
+msgid "Cancel drawing"
+msgstr "Cancelar desenho"
+
+#: legacy:leafletDraw.draw.toolbar.buttons.circle
+msgid "Draw a circle"
+msgstr "Desenhar um círculo"
+
+#: legacy:leafletDraw.draw.toolbar.buttons.circlemarker
+msgid "Draw a circlemarker"
+msgstr "Desenhar um marcador circular"
+
+#: legacy:leafletDraw.draw.toolbar.buttons.marker
+msgid "Draw a marker"
+msgstr "Desenhar um marcador"
+
+#: legacy:leafletDraw.draw.toolbar.buttons.polygon
+msgid "Draw a polygon"
+msgstr "Desenhar um polígono"
+
+#: legacy:leafletDraw.draw.toolbar.buttons.polyline
+msgid "Draw a polyline"
+msgstr "Desenhar uma polilinha"
+
+#: legacy:leafletDraw.draw.toolbar.buttons.rectangle
+msgid "Draw a rectangle"
+msgstr "Desenhar um retângulo"
+
+#: legacy:leafletDraw.draw.toolbar.finish.text
+msgid "Finish"
+msgstr "Finalizar"
+
+#: legacy:leafletDraw.draw.toolbar.finish.title
+msgid "Finish drawing"
+msgstr "Finalizar desenho"
+
+#: legacy:leafletDraw.draw.toolbar.undo.text
+msgid "Delete last point"
+msgstr "Apagar último ponto"
+
+#: legacy:leafletDraw.draw.toolbar.undo.title
+msgid "Delete last point drawn"
+msgstr "Apagar último ponto"
+
+#: legacy:leafletDraw.edit.handlers.edit.tooltip.subtext
+msgid "Click cancel to undo changes."
+msgstr "Clique em cancelar para desfazer as alterações."
+
+#: legacy:leafletDraw.edit.handlers.edit.tooltip.text
+msgid "Drag handles or markers to edit features."
+msgstr "Arraste os manipuladores ou marcadores para editar as feições."
+
+#: legacy:leafletDraw.edit.handlers.remove.tooltip.text
+msgid "Click on a feature to remove."
+msgstr "Clique em uma feição para remover."
+
+#: legacy:leafletDraw.edit.toolbar.actions.cancel.title
+msgid "Cancel editing, discards all changes."
+msgstr "Cancelar edição, descarta todas as alterações."
+
+#: legacy:leafletDraw.edit.toolbar.actions.clearAll.text
+msgid "Clear All"
+msgstr "Limpar Tudo"
+
+#: legacy:leafletDraw.edit.toolbar.actions.clearAll.title
+msgid "Clear all layers."
+msgstr "Limpar todas as camadas."
+
+#: legacy:leafletDraw.edit.toolbar.actions.save.title
+msgid "Save changes."
+msgstr "Salvar alterações."
+
+#: legacy:leafletDraw.edit.toolbar.buttons.edit
+msgid "Edit layers."
+msgstr "Editar camadas."
+
+#: legacy:leafletDraw.edit.toolbar.buttons.editDisabled
+msgid "No layers to edit."
+msgstr "Nenhuma camada para editar."
+
+#: legacy:leafletDraw.edit.toolbar.buttons.remove
+msgid "Delete layers."
+msgstr "Apagar camadas."
+
+#: legacy:leafletDraw.edit.toolbar.buttons.removeDisabled
+msgid "No layers to delete."
+msgstr "Nenhuma camada para apagar."
+
+#: legacy:mapComponents.areasDisplayPanel.apiMessagesTitle
+msgid "API Messages:"
+msgstr "Mensagens da API:"
+
+#: legacy:mapComponents.areasDisplayPanel.editLayer
+msgid "Edit layer"
+msgstr "Editar camada"
+
+#: legacy:mapComponents.areasDisplayPanel.hideLayer
+msgid "Hide layer"
+msgstr "Ocultar camada"
+
+#: legacy:mapComponents.areasDisplayPanel.layerColorTitle
+msgid "Layer color"
+msgstr "Cor da camada"
+
+#: legacy:mapComponents.areasDisplayPanel.notApplicable
+msgid "N/A"
+msgstr "N/D"
+
+#: legacy:mapComponents.areasDisplayPanel.removeLayer
+msgid "Remove layer"
+msgstr "Remover camada"
+
+#: legacy:mapComponents.areasDisplayPanel.showLayer
+msgid "Show layer"
+msgstr "Mostrar camada"
+
+#: legacy:mapComponents.areasDisplayPanel.sourceIdPrefix
+msgid "Source ID:"
+msgstr "ID Origem:"
+
+#: legacy:mapComponents.areasDisplayPanel.title
+msgid "Vectorized Areas"
+msgstr "Quadro de Áreas Vetorizadas"
+
+#: legacy:mapComponents.propertyMapView.apiError
+msgid "API Error"
+msgstr "Erro na API"
+
+#: legacy:mapComponents.propertyMapView.areaNotAvailable
+msgid "Area not available"
+msgstr "Área não disponível"
+
+#: legacy:mapComponents.propertyMapView.loaded
+msgid "Loaded"
+msgstr "Carregado"
+
+#: legacy:mapComponents.propertyMapView.maxInstancesAlert
+msgid "Layer \"{displayName}\" can only be drawn {maxInstances} time(s)."
+msgstr "A camada \"{displayName}\" só pode ser desenhada {maxInstances} vez(es)."
+
+#: legacy:mapComponents.propertyMapView.processing
+msgid "Processing..."
+msgstr "Processando..."
+
+#: legacy:mapComponents.propertyMapView.processingApi
+msgid "Processing API..."
+msgstr "Processando API..."
+
+#: legacy:mapComponents.propertyMapView.propertyAreaRequired
+msgid "Property area(ha) is required."
+msgstr "Área do imóvel (ha) é obrigatória."
+
+#: legacy:mapComponents.propertyMapView.requiredLayersValidationListItem
+msgid "• {displayName}"
+msgstr "• {displayName}"
+
+#: legacy:mapComponents.propertyMapView.requiredLayersValidationMessage
+msgid "The following required layers must be vectorized before proceeding:"
+msgstr "As seguintes camadas obrigatórias devem ser vetorizadas antes de prosseguir:"
+
+#: legacy:mapComponents.propertyMapView.requiredLayersValidationTitle
+msgid "Required Layers Validation"
+msgstr "Validação de Camadas Obrigatórias"
+
+#: legacy:mapComponents.vectorizationToolPanel.clickGroupToSeeLayers
+msgid "Click a group to see available layers."
+msgstr "Clique em um grupo para ver as camadas disponíveis."
+
+#: legacy:mapComponents.vectorizationToolPanel.fixedParameters.keys.buffer_size
+msgid "Buffer Size"
+msgstr "Tamanho do Buffer"
+
+#: legacy:mapComponents.vectorizationToolPanel.fixedParameters.keys.options
+msgid "Options"
+msgstr "Opções"
+
+#: legacy:mapComponents.vectorizationToolPanel.fixedParameters.title
+msgid "Fixed Parameters"
+msgstr "Parâmetros Fixos"
+
+#: legacy:mapComponents.vectorizationToolPanel.geometryTypeForDrawing
+msgid "Geometry type for drawing"
+msgstr "Tipo de geometria para desenho"
+
+#: legacy:mapComponents.vectorizationToolPanel.layerInfoDefault
+msgid "No additional information for {layerName}."
+msgstr "Nenhuma informação adicional para {layerName}."
+
+#: legacy:mapComponents.vectorizationToolPanel.layerInfoTitle
+msgid "Info: {layerName}"
+msgstr "Informação: {layerName}"
+
+#: legacy:mapComponents.vectorizationToolPanel.limitReached
+msgid "Limit reached ({current}/{max}) - {layerName}"
+msgstr "Limite atingido ({current}/{max}) - {layerName}"
+
+#: legacy:mapComponents.vectorizationToolPanel.limitReachedShort
+msgid "Maximum: {max}"
+msgstr "Máximo: {max}"
+
+#: legacy:mapComponents.vectorizationToolPanel.noLayerGroupsConfigured
+msgid "No layer groups configured."
+msgstr "Nenhum grupo de camadas configurado."
+
+#: legacy:mapComponents.vectorizationToolPanel.noLayersInGroup
+msgid "No layers available in this group."
+msgstr "Nenhuma camada disponível neste grupo."
+
+#: legacy:mapComponents.vectorizationToolPanel.requiredLayerIndicator
+msgid "Required layer"
+msgstr "Camada obrigatória"
+
+#: legacy:mapComponents.vectorizationToolPanel.selectLayerFromGroup
+msgid "Please select a layer from the group above."
+msgstr "Por favor, selecione uma camada do grupo acima."
+
+#: legacy:mapComponents.vectorizationToolPanel.selectedLayer
+msgid "Selected Layer"
+msgstr "Camada Selecionada"
+
+#: legacy:mapComponents.vectorizationToolPanel.title
+msgid "Select Layer for Vectorization"
+msgstr "Selecionar Camada para Vetorizar"
+
+#: legacy:properties.filter.apply
+msgid "Apply"
+msgstr "Aplicar"
+
+#: legacy:properties.filter.clean
+msgid "Clean"
+msgstr "Limpar"
+
+#: legacy:properties.filter.code
+msgid "Property Registration Number"
+msgstr "Número de Registro da Propriedade"
+
+#: legacy:properties.filter.filter
+msgid "Filter"
+msgstr "Filtro"
+
+#: legacy:properties.filter.landholder
+msgid "Landholder"
+msgstr "Proprietário"
+
+#: legacy:properties.filter.landholderId
+msgid "Landholder ID"
+msgstr "ID do Proprietário"
+
+#: legacy:properties.filter.location
+msgid "Location"
+msgstr "Localização"
+
+#: legacy:properties.filter.ownersIdentifier
+msgid "Landholder Identifier"
+msgstr "Identificador do Proprietário"
+
+#: legacy:properties.filter.ownersName
+msgid "Landholder Name"
+msgstr "Nome do Proprietário"
+
+#: legacy:properties.filter.propertyNumbers
+msgid "Property Numbers"
+msgstr "Números da Propriedade"
+
+#: legacy:properties.filter.selectCity
+msgid "Select City"
+msgstr "Selecionar Cidade"
+
+#: legacy:properties.filter.selectState
+msgid "Select State"
+msgstr "Selecionar Estado"
+
+#: legacy:properties.propertyCard.code
+msgid "Code"
+msgstr "Código"
+
+#: legacy:properties.propertyCard.details
+msgid "Details"
+msgstr "Detalhes"
+
+#: legacy:properties.propertyCard.registration
+msgid "Receipt"
+msgstr "Registro"
+
+#: legacy:properties.propertyCardTitle
+msgid "REGISTER MORE PROPERTIES"
+msgstr "CADASTRAR MAIS IMÓVEIS"
+
+#: legacy:properties.propertyInfo
+msgid "Only properties where you are the owner or representative will be displayed."
+msgstr "Somente serão exibidas as propriedades em que você é proprietário(a) ou representante."
+
+#: legacy:properties.registerProperty
+msgid "Register Property"
+msgstr "Cadastrar Imóvel"
+
+#: legacy:register.closeButton
+msgid "Close"
+msgstr "Fechar"
+
+#: legacy:register.confirmButton
+msgid "OK"
+msgstr "OK"
+
+#: legacy:register.errors.checkValue
+msgid "Check the value"
+msgstr "Verifique o valor"
+
+#: legacy:register.errors.dateFormat
+msgid "must be in yyyy-MM-DD format"
+msgstr "deve estar no formato AAAA-MM-DD"
+
+#: legacy:register.errors.dateUpperLimit
+msgid "must be less than or equal to today's date"
+msgstr "deve ser menor ou igual à data de hoje"
+
+#: legacy:register.errors.isRequired
+msgid "is required"
+msgstr "é obrigatório"
+
+#: legacy:register.landholdersInformation.ListOfOwnersHolders
+msgid "List of Owners/Holders"
+msgstr "Lista de Proprietários/Possuidores"
+
+#: legacy:register.landholdersInformation.addNewLandholder
+msgid "Add New Landholder"
+msgstr "Adicionar Novo Proprietário/Posseiro"
+
+#: legacy:register.landholdersInformation.addOwnerHolder
+msgid "Add owner/holder"
+msgstr "Adicionar proprietário/possuidor"
+
+#: legacy:register.landholdersInformation.cancel
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: legacy:register.landholdersInformation.card
+msgid "LANDHOLDERS INFORMATION"
+msgstr "INFORMAÇÕES DO PROPRIETÁRIO/POSSUIDOR"
+
+#: legacy:register.landholdersInformation.cardSubtitle
+msgid "Fill in the information about the landholder or land owner. This person is legally responsible for the land being registered."
+msgstr "Preencha as informações do proprietário ou possuidor. Esta pessoa é legalmente responsável pelo imóvel que está sendo cadastrado."
+
+#: legacy:register.landholdersInformation.clear
+msgid "Clear"
+msgstr "Limpar"
+
+#: legacy:register.landholdersInformation.editingLandholder
+msgid "Editing Landholder"
+msgstr "Editando Proprietário/Posseiro"
+
+#: legacy:register.landholdersInformation.form.chooseLandholderInfoMethod.label
+msgid "Choose a way to add landholder's information"
+msgstr "Escolha como adicionar as informações do proprietário/possuidor"
+
+#: legacy:register.landholdersInformation.form.chooseLandholderInfoMethod.options.one
+msgid "Fill in data"
+msgstr "Preencher dados"
+
+#: legacy:register.landholdersInformation.form.chooseLandholderInfoMethod.options.two
+msgid "Import data files"
+msgstr "Importar arquivos de dados"
+
+#: legacy:register.landholdersInformation.form.chooseLandholderInfoMethod.tooltip
+msgid "Select how you want to provide the landholder's details: manually entering the data or importing from a file."
+msgstr "Selecione como deseja fornecer os detalhes: preenchendo os dados ou importando de um arquivo."
+
+#: legacy:register.landholdersInformation.form.landholderLegalPersonality.label
+msgid "Legal personality of landholder"
+msgstr "Personalidade jurídica do proprietário/possuidor"
+
+#: legacy:register.landholdersInformation.form.landholderLegalPersonality.options.one
+msgid "Natural persons"
+msgstr "Pessoa física"
+
+#: legacy:register.landholdersInformation.form.landholderLegalPersonality.options.two
+msgid "Legal entities"
+msgstr "Pessoa jurídica"
+
+#: legacy:register.landholdersInformation.form.optional
+msgid "(Optional)"
+msgstr "(Opcional)"
+
+#: legacy:register.landholdersInformation.saveChanges
+msgid "Save changes"
+msgstr "Salvar alterações"
+
+#: legacy:register.landholdersInformation.table.emptyData
+msgid "There is no data to show."
+msgstr "Não há dados para exibir."
+
+#: legacy:register.landholdersInformation.table.header.actions
+msgid "Actions"
+msgstr "Ações"
+
+#: legacy:register.landholdersInformation.table.header.legalPersonality
+msgid "Legal personality"
+msgstr "Personalidade jurídica"
+
+#: legacy:register.landholdersInformation.table.header.taxpayer
+msgid "Taxpayer ID"
+msgstr "CPF"
+
+#: legacy:register.landholdersInformation.table.legalEntity
+msgid "Legal Entity"
+msgstr "Pessoa Jurídica"
+
+#: legacy:register.landholdersInformation.table.naturalPerson
+msgid "Natural Person"
+msgstr "Pessoa Física"
+
+#: legacy:register.landholdersInformation.warningModal
+msgid "Please add at least one landholder."
+msgstr "Por favor, adicione pelo menos um proprietário/possuidor."
+
+#: legacy:register.landholdersInformation.warningModalDelete
+msgid "Are you sure you want to delete the Owner/Holder?"
+msgstr "Tem certeza de que deseja excluir o proprietário/possuidor?"
+
+#: legacy:register.landholdersInformation.warningModalRequired
+msgid "All fields must be filled in before saving."
+msgstr "Todos os campos devem ser preenchidos antes de salvar."
+
+#: legacy:register.landholdersInformation.warningModalTitle
+msgid "Attention"
+msgstr "Atenção"
+
+#: legacy:register.nextButton
+msgid "Next"
+msgstr "Próximo"
+
+#: legacy:register.previousButton
+msgid "Previous"
+msgstr "Anterior"
+
+#: legacy:register.propertyMap.cardSubtitle
+msgid "Vectorization of information related to areas."
+msgstr "Vetorização de informações relacionadas às áreas do imóvel."
+
+#: legacy:register.propertyRights.areaDifferenceExceeded
+msgid "Please check the information provided and try again."
+msgstr "Verifique os dados informados e tente novamente."
+
+#: legacy:register.propertyRights.card
+msgid "OWNER DETAILS AND DOCUMENTATION."
+msgstr "DOCUMENTOS DE POSSE OU PROPRIEDADE"
+
+#: legacy:register.propertyRights.cardSubtitle
+msgid "Provide information of the property or landholding documentation."
+msgstr "Forneça as informações da documentação do imóvel ou posse."
+
+#: legacy:register.propertyRights.confirm
+msgid "Are you sure you want to send register?"
+msgstr "Tem certeza de que deseja enviar o cadastro?"
+
+#: legacy:register.propertyRights.confirmModalOverAreaLimitDocs
+msgid "Area from documents: "
+msgstr "Área nos documentos: "
+
+#: legacy:register.propertyRights.confirmModalOverAreaLimitMap
+msgid "Area from map: "
+msgstr "Área no mapa: "
+
+#: legacy:register.propertyRights.confirmModalOverAreaLimitQuestion
+msgid "Do you wish to proceed with the registration?"
+msgstr "Você deseja continuar com o cadastro?"
+
+#: legacy:register.propertyRights.confirmModalOverAreaLimitRule
+msgid "As a rule, the difference should not exceed: "
+msgstr "Por regra, a diferença não deveria ultrapassar: "
+
+#: legacy:register.propertyRights.confirmModalOverAreaLimitWarning
+msgid "The property area specified in the documents differs from the area calculated on the map."
+msgstr "A área do imóvel informada nos documentos difere da área calculada no mapa."
+
+#: legacy:register.propertyRights.connectionError
+msgid "Connection error or server unavailable. Please check your connection and try again."
+msgstr "Erro de conexão ou servidor indisponível. Verifique sua conexão e tente novamente."
+
+#: legacy:register.propertyRights.deletePropertyInformationModal
+msgid "Are you sure you want to delete the entered land documents?"
+msgstr "Tem certeza de que deseja excluir os documentos de terreno inseridos?"
+
+#: legacy:register.propertyRights.form.add
+msgid "Add"
+msgstr "Adicionar"
+
+#: legacy:register.propertyRights.form.addNewProperty
+msgid "Add New Property"
+msgstr "Adicionar Novo Documento"
+
+#: legacy:register.propertyRights.form.area
+msgid "Area"
+msgstr "Área (ha)"
+
+#: legacy:register.propertyRights.form.book
+msgid "Book"
+msgstr "Livro"
+
+#: legacy:register.propertyRights.form.cityOfTheNotaryOffice
+msgid "City of The Notary Office"
+msgstr "Município do Cartório"
+
+#: legacy:register.propertyRights.form.documentDate
+msgid "Document Date"
+msgstr "Data do Documento"
+
+#: legacy:register.propertyRights.form.documentType
+msgid "Document Type"
+msgstr "Tipo de Documento"
+
+#: legacy:register.propertyRights.form.documentTypeOptions.deed
+msgid "Deed"
+msgstr "Escritura"
+
+#: legacy:register.propertyRights.form.documentTypeOptions.purchaseandsaleagreement
+msgid "Purchase and Sale Agreement"
+msgstr "Contrato de Compra e Venda"
+
+#: legacy:register.propertyRights.form.documentTypeOptions.titledeed
+msgid "Title Deed"
+msgstr "Título Definitivo"
+
+#: legacy:register.propertyRights.form.documentTypePlaceHolder
+msgid "Select the document type"
+msgstr "Selecione o tipo de comprovação"
+
+#: legacy:register.propertyRights.form.editingProperty
+msgid "Editing Property"
+msgstr "Editando Documento"
+
+#: legacy:register.propertyRights.form.legalReserve.label
+msgid "Does it have a registered Legal Reserve and/or an approved but not registered Legal Reserve?"
+msgstr "Possui Reserva Legal averbada e/ou aprovada não averbada?"
+
+#: legacy:register.propertyRights.form.legalReserve.legalReserveOptions.no
+msgid "No"
+msgstr "Não"
+
+#: legacy:register.propertyRights.form.legalReserve.legalReserveOptions.yes
+msgid "Yes"
+msgstr "Sim"
+
+#: legacy:register.propertyRights.form.legalReserve2
+msgid "Does not have a registered Legal Reserve and/or an approved but not registered Legal Reserve."
+msgstr "Não possui Reserva Legal averbada ou aprovada não averbada."
+
+#: legacy:register.propertyRights.form.nationalRuralLandRegistrySystemCode
+msgid "National Rural Land Registry System Code"
+msgstr "Código do Imóvel no SNCR (INCRA)"
+
+#: legacy:register.propertyRights.form.nationalRuralLandRegistrySystemCodeTooltip
+msgid "Unique identifier assigned to rural properties within the National Rural Land Registry System."
+msgstr "Identificador único atribuído aos imóveis rurais no Sistema Nacional de Cadastro Rural."
+
+#: legacy:register.propertyRights.form.nationalRuralPropertyRegistrationNumber
+msgid "National Rural Property Registration Number"
+msgstr "Código do Cadastro Fundiário"
+
+#: legacy:register.propertyRights.form.nationalRuralPropertyRegistrationNumberTooltip
+msgid "Official registration number of the rural property, used for legal and administrative purposes."
+msgstr "Número de registro do imóvel rural no Cadastro Ambiental Rural."
+
+#: legacy:register.propertyRights.form.page
+msgid "Page"
+msgstr "Folha"
+
+#: legacy:register.propertyRights.form.propertyCertification
+msgid "Property Certification"
+msgstr "Matrícula do Imóvel"
+
+#: legacy:register.propertyRights.form.propertyCertificationTooltip
+msgid "Certification that verifies the legal status and compliance of the property according to national regulations."
+msgstr "Número da matrícula do imóvel no cartório de registro de imóveis."
+
+#: legacy:register.propertyRights.form.propertyOrLandholding
+msgid "Property or Landholding"
+msgstr "Tipo de Documento"
+
+#: legacy:register.propertyRights.form.propertyOrLandholdingOption.landholding
+msgid "Landholding"
+msgstr "Posse"
+
+#: legacy:register.propertyRights.form.propertyOrLandholdingOption.property
+msgid "Property"
+msgstr "Imóvel"
+
+#: legacy:register.propertyRights.form.registeredPropertyName
+msgid "Registered Property Name"
+msgstr "Nome do Imóvel no Registro"
+
+#: legacy:register.propertyRights.form.saveChanges
+msgid "Save Changes"
+msgstr "Salvar Alterações"
+
+#: legacy:register.propertyRights.form.stateOfTheNotaryOffice
+msgid "State of The Notary Office"
+msgstr "UF do Cartório"
+
+#: legacy:register.propertyRights.form.titleDeedOrLandDocument
+msgid "Title deed/ Land Document"
+msgstr "Número do Documento"
+
+#: legacy:register.propertyRights.form.titleDeedOrLandDocumentTooltip
+msgid "Official legal document proving ownership of a property or land. Ensure it is properly registered and up to date."
+msgstr "Documento legal que comprova a propriedade ou posse. Garanta que esteja devidamente registrado e atualizado."
+
+#: legacy:register.propertyRights.invalidForm
+msgid "Please add at least one Land Document"
+msgstr "Adicione pelo menos um Documento de Terra"
+
+#: legacy:register.propertyRights.list.stateAndCityOfTheNotaryOffice
+msgid "State and City of the Notary Office"
+msgstr "UF e Município do Cartório"
+
+#: legacy:register.propertyRights.list.type.title
+msgid "Type"
+msgstr "Tipo"
+
+#: legacy:register.propertyRights.listOfInformedLandDocuments
+msgid "List of informed land documents"
+msgstr "Lista de documentos informados"
+
+#: legacy:register.propertyRights.modalOverAreaLimitTitle
+msgid "Area difference exceeded"
+msgstr "Diferença de área excedida"
+
+#: legacy:register.propertyRights.noMapData
+msgid "No map data found. Please return to the property map step to vectorize the required areas."
+msgstr "Nenhum dado do mapa foi encontrado. Retorne à etapa do mapa da propriedade para vetorizar as áreas obrigatórias."
+
+#: legacy:register.propertyRights.previousStepsBlankFields
+msgid "There are required fields in previous steps that need to be filled"
+msgstr "Há campos obrigatórios nas etapas anteriores que precisam ser preenchidos"
+
+#: legacy:register.propertyRights.requestError
+msgid "You are about to submit a form with invalid data. Please check the fields and try again."
+msgstr "Você está prestes a enviar um formulário com dados inválidos. Verifique os campos e tente novamente."
+
+#: legacy:register.propertyRights.savingData
+msgid "Saving property's data."
+msgstr "Salvando dados da propriedade."
+
+#: legacy:register.propertyRights.savingDataModalTitle
+msgid "Wait"
+msgstr "Aguarde"
+
+#: legacy:register.propertyRights.serverError
+msgid "Unexpected server error. Please try again."
+msgstr "Erro inesperado do servidor. Tente novamente."
+
+#: legacy:register.propertyRights.successModal
+msgid "Data registered successfully"
+msgstr "Dados registrados com sucesso."
+
+#: legacy:register.propertyRights.successModalTitle
+msgid "Success"
+msgstr "Sucesso"
+
+#: legacy:register.propertyRights.sucess
+msgid "Data registered successfully. The receipt will be generated automatically"
+msgstr "Dados cadastrados com sucesso. O recibo será gerado automaticamente."
+
+#: legacy:register.propertyRights.validationError.fields
+msgid "Required fields"
+msgstr "Campos obrigatórios"
+
+#: legacy:register.propertyRights.validationError.header
+msgid "There are required fields that need to be filled before submitting:"
+msgstr "Existem campos obrigatórios que precisam ser preenchidos antes do envio:"
+
+#: legacy:register.propertyRights.validationError.instruction
+msgid "Please go back to the previous steps and fill in all required fields before proceeding."
+msgstr "Por favor, volte às etapas anteriores e preencha todos os campos obrigatórios antes de prosseguir."
+
+#: legacy:register.register
+msgid "Register"
+msgstr "Cadastrar"
+
+#: legacy:register.registrarDetails.card
+msgid "REGISTRAR'S DETAILS"
+msgstr "DADOS DO DECLARANTE"
+
+#: legacy:register.registrarDetails.cardSubtitle
+msgid "Fill in the information of the person responsible for doing the register (landholder, technical assistant, government officer, others)."
+msgstr "Preencha as informações da pessoa que está realizando a declaração (detentor do imóvel, técnico responsável, servidor público ou outros)."
+
+#: legacy:register.registrarDetails.data
+msgid "Data"
+msgstr "Dados"
+
+#: legacy:register.registrarDetails.form.dateOfBirth
+msgid "Date of birth"
+msgstr "Data de Nascimento/Criação"
+
+#: legacy:register.registrarDetails.form.id
+msgid "Personal ID"
+msgstr "ID Pessoal"
+
+#: legacy:register.registrarDetails.form.mothersName
+msgid "Mother's name"
+msgstr "Nome da Mãe"
+
+#: legacy:register.registrarDetails.form.name
+msgid "Name"
+msgstr "Nome"
+
+#: legacy:register.registrarDetails.form.options.one
+msgid "I do not have a representative"
+msgstr "Não possuo representante"
+
+#: legacy:register.registrarDetails.form.options.three
+msgid "I have a representative and he/she is not the registrar"
+msgstr "Possuo representante e ele(a) não é o declarante"
+
+#: legacy:register.registrarDetails.form.options.two
+msgid "I have a representative and he/she is the registrar"
+msgstr "Possuo representante e ele(a) é o declarante"
+
+#: legacy:register.registrarDetails.form.required
+msgid "(Required)"
+msgstr "(Obrigatório)"
+
+#: legacy:register.registrarDetails.registrarMustBeDifferentFromRepresentative
+msgid "Registrar must be different from Representative"
+msgstr "Declarante deve ser diferente do Representante"
+
+#: legacy:register.registrarDetails.representativeData
+msgid "Representative Data"
+msgstr "Dados do Representante"
+
+#: legacy:register.registrarDetails.representativeDataSubtitle
+msgid "Representative: In the Rural Environmental Registry (RER), the representative is an individual authorized by the property owner or landholder to act on their behalf at all stages of the registration process."
+msgstr "Representante: No Cadastro Ambiental Rural (CAR) o representante é a pessoa física autorizada pelo proprietário ou possuidor, a representá-lo em todas as fases do processo de inscrição e retificação do CAR."
+
+#: legacy:register.route-editing
+msgid "Edit property"
+msgstr "Editar imóvel"
+
+#: legacy:register.route-editing-cancel-button
+msgid "Cancel editing"
+msgstr "Cancelar edição"
+
+#: legacy:register.ruralProperty.card
+msgid "RURAL PROPERTY"
+msgstr "DADOS DO IMÓVEL RURAL"
+
+#: legacy:register.ruralProperty.cardMailingAddress
+msgid "Mailing Address"
+msgstr "Endereço para Correspondência"
+
+#: legacy:register.ruralProperty.cardSubtitle
+msgid "Fill in the information of the rural property."
+msgstr "Preencha as informações do imóvel rural."
+
+#: legacy:register.ruralProperty.form.city
+msgid "City"
+msgstr "Município"
+
+#: legacy:register.ruralProperty.form.cityPlaceHolder
+msgid "Select the city"
+msgstr "Selecione o município"
+
+#: legacy:register.ruralProperty.form.descriptionOfPropertyAcess
+msgid "Description of Property Access (Optional)"
+msgstr "Descrição do Acesso ao Imóvel (Opcional)"
+
+#: legacy:register.ruralProperty.form.descriptionOfPropertyAcessTooltip
+msgid "Provide details about how the property can be accessed, such as roads, landmarks, or specific directions. This field is optional."
+msgstr "Forneça detalhes sobre como acessar a propriedade, como estradas, pontos de referência ou direções específicas. Este campo é opcional."
+
+#: legacy:register.ruralProperty.form.locationZonev
+msgid "Location Zone (Optional)"
+msgstr "Zona de Localização (Opcional)"
+
+#: legacy:register.ruralProperty.form.locationZonevOption.rural
+msgid "Rural"
+msgstr "Rural"
+
+#: legacy:register.ruralProperty.form.locationZonevOption.urban
+msgid "Urban"
+msgstr "Urbana"
+
+#: legacy:register.ruralProperty.form.propertyName
+msgid "Property Name"
+msgstr "Nome do Imóvel"
+
+#: legacy:register.ruralProperty.form.statePlaceHolder
+msgid "Select the state"
+msgstr "Selecione o estado"
+
+#: legacy:register.ruralProperty.form.zipCode
+msgid "Zip Code"
+msgstr "CEP"
+
+#: legacy:register.ruralProperty.formMailingAddress.additionalInformation
+msgid "Additional Information (Optional)"
+msgstr "Complemento (Opcional)"
+
+#: legacy:register.ruralProperty.formMailingAddress.addressStreet
+msgid "Address/Street"
+msgstr "Logradouro"
+
+#: legacy:register.ruralProperty.formMailingAddress.addressStreetTooltip
+msgid "Enter the official address or street name where the property is located."
+msgstr "Insira o endereço oficial ou nome da rua onde o imóvel está localizado."
+
+#: legacy:register.ruralProperty.formMailingAddress.contactNumber
+msgid "Contact Number (Optional)"
+msgstr "Telefone de Contato (Opcional)"
+
+#: legacy:register.ruralProperty.formMailingAddress.email
+msgid "E-mail (Optional)"
+msgstr "E-mail (Opcional)"
+
+#: legacy:register.ruralProperty.formMailingAddress.neighborhood
+msgid "Neighborhood"
+msgstr "Bairro"
+
+#: legacy:register.ruralProperty.formMailingAddress.number
+msgid "Number"
+msgstr "Número"
+
+#: legacy:register.ruralProperty.formMailingAddress.recipientName
+msgid "Recipient Name"
+msgstr "Nome do Destinatário"
+
+#: legacy:register.saveButton
+msgid "Save"
+msgstr "Salvar"
+
+#: legacy:register.step
+msgid "Step"
+msgstr "Etapa"
+
+#: legacy:register.steps.landholdersInformation
+msgid "Landholder's information"
+msgstr "Informações do detentor do imóvel"
+
+#: legacy:register.steps.propertyMap
+msgid "Property map"
+msgstr "Mapa da propriedade"
+
+#: legacy:register.steps.propertyRights
+msgid "Property rights"
+msgstr "Documentos de posse ou propriedade"
+
+#: legacy:register.steps.registrarDetails
+msgid "Registrar's details"
+msgstr "Detalhes do declarante"
+
+#: legacy:register.steps.ruralProperties
+msgid "Rural properties"
+msgstr "Dados do imóvel rural"
+
+#: legacy:wms.declaredLandCover
+msgid "Declared Land Cover"
+msgstr "Cobertura do Solo Declarada"
+
+#: legacy:wms.declaredLandCover_layers.consolidatedArea
+msgid "Consolidated Area"
+msgstr "Área Consolidada"
+
+#: legacy:wms.declaredLandCover_layers.fallowArea
+msgid "Fallow Area"
+msgstr "Área de Pousio"
+
+#: legacy:wms.declaredLandCover_layers.nativeVegetation
+msgid "Remaining Native Vegetation"
+msgstr "Vegetação Nativa Remanescente"
+
+#: legacy:wms.declaredRuralProperties
+msgid "Declared Rural Properties"
+msgstr "Imóveis Rurais Declarados"
+
+#: legacy:wms.declaredRuralProperties_layers.ruralProperties
+msgid "Rural Properties"
+msgstr "Imóveis Rurais"
+
+#: legacy:wms.declaredRuralProperties_layers.ruralPropertiesAgrarian
+msgid "Rural Properties from Agrarian Reform Settlements"
+msgstr "Imóveis Rurais de Assentamentos da Reforma Agrária"
+
+#: legacy:wms.declaredRuralProperties_layers.traditionalTerritory
+msgid "Traditional Territory of Peoples and Communities"
+msgstr "Território Tradicional de Povos e Comunidades Tradicionais"
+
+#: legacy:wms.territorialDivision
+msgid "Territorial Division"
+msgstr "Divisão Territorial"
+
+#: legacy:wms.territorialDivision_layers.brazil
+msgid "Brazil"
+msgstr "Brasil"
+
+#: legacy:wms.territorialDivision_layers.municipality
+msgid "Municipality"
+msgstr "Município"
+
+#: legacy:wms.territorialDivision_layers.state
+msgid "State"
+msgstr "Estado"

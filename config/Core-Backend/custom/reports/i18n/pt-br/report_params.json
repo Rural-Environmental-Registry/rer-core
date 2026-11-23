@@ -1,0 +1,48 @@
+{
+  "header": {
+    "title_text": "COMPROVANTE DE INSCRIÇÃO DE IMÓVEL RURAL NO CAR",
+    "registry_code_label": "Registro CAR",
+    "registry_at_date_label": "Inscrito em"
+  },
+  "main_property_information": {
+    "title_text": "COMPROVANTE DE INSCRIÇÃO DE IMÓVEL RURAL NO CAR",
+    "rural_property_name_label": "Nome do Imóvel Rural",
+    "municipality_label": "Município",
+    "state_distric_label": "Estado/UF",
+    "geographic_coordinates_centroid_text": "Coordenadas Geográficas do Centroide do Imóvel Rural",
+    "latitude_label": "Latitude",
+    "longitude_label": "Longitude",
+    "total_area_of_property_label": "Área Total (ha) do Imóvel Rural"
+  },
+  "general_information_title": "INFORMAÇÕES GERAIS",
+  "grafic_representation_title": "REPRESENTAÇÃO GRÁFICA",
+  "owner_holder_information": {
+    "title_text": "IDENTIFICAÇÃO DO PROPRIETÁRIO/POSSUIDOR",
+    "identifier_label": "Identificador",
+    "name_label": "Nome"
+  },
+  "land_documents": {
+    "title_text": "DOCUMENTOS FUNDIÁRIOS DO IMÓVEL",
+    "registered_property_name_title": "Denominação do Imóvel",
+    "basic_information": {
+      "document_type_label": "Tipo de Documento",
+      "area_label": "Área",
+      "has_legal_reserve_label": "Possui Reserva Legal?"
+    },
+    "property_documents_attributes_title": "Atributos dos Documentos do Imóvel",
+    "attributes": {
+      "holdingtype_label": "Tipo de Posse",
+      "deed_label": "Escritura",
+      "documentdate_label": "Data do Documento",
+      "book_label": "Livro",
+      "page_label": "Folha",
+      "state_of_notary_office_label": "UF do Cartório",
+      "city_of_notary_office_label": "Município do Cartório",
+      "property_certification_label": "Matrícula do Imóvel",
+      "national_rural_land_registration_number_label": "Código do Cadastro Fundiário"
+    }
+  },
+  "footer": {
+    "main_footer_text": "CAR - Cadastro Ambiental Rural"
+  }
+}
