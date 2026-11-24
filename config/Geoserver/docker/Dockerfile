@@ -1,4 +1,7 @@
 FROM docker.osgeo.org/geoserver:2.28.0
+# CVE-2026-114938: substitui o JDK embarcado (Temurin 17.0.16) pelo 17.0.21.1 corrigido.
+# Remover quando a imagem oficial trouxer JDK corrigido.
+COPY --from=eclipse-temurin:17.0.21.1_2-jre-noble /opt/java/openjdk /opt/java/openjdk
 
 # Instalar dependências necessárias
 USER root

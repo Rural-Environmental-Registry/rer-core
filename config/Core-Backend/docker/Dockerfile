@@ -32,7 +32,7 @@ RUN --mount=type=cache,target=/root/.gradle/caches \
 # ============================
 # 3) Runtime Stage
 # ============================
-FROM eclipse-temurin:21-jre-jammy AS runtime
+FROM eclipse-temurin:21.0.13.1_2-jre-jammy AS runtime
 WORKDIR /app
 
 # Atualizar sistema e instalar dependências

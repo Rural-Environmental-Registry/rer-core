@@ -29,7 +29,7 @@ RUN --mount=type=cache,target=/root/.m2/repository \
 # ============================
 # 3) Runtime Stage
 # ============================
-FROM eclipse-temurin:21-jre-alpine AS runtime
+FROM eclipse-temurin:21.0.13.1_2-jre-alpine AS runtime
 
 # Atualizar pacotes para corrigir CVEs
 RUN apk update && apk upgrade --no-cache
